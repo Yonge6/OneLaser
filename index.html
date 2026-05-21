@@ -1,0 +1,1191 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ONELASER Brand Asset Management SOP | 品牌资产管理 SOP</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #5d6876;
+      --line: #d8e0e8;
+      --paper: #f7f9fb;
+      --white: #ffffff;
+      --blue: #0788f2;
+      --blue-dark: #005eba;
+      --green: #0a8f76;
+      --amber: #b66b00;
+      --red: #c43d32;
+      --shadow: 0 18px 48px rgba(24, 45, 72, .10);
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(7, 136, 242, .08) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(7, 136, 242, .06) 1px, transparent 1px),
+        var(--paper);
+      background-size: 42px 42px;
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; }
+
+    .shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      align-items: center;
+      padding: 48px 0 28px;
+      position: relative;
+      overflow: hidden;
+      color: white;
+      background:
+        linear-gradient(135deg, rgba(0, 55, 112, .78), rgba(0, 110, 205, .88)),
+        radial-gradient(circle at 70% 28%, rgba(255, 255, 255, .24), transparent 34%),
+        linear-gradient(135deg, #012a50, #0677d9 52%, #17b6a0);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 120px;
+      background: linear-gradient(180deg, transparent, rgba(247, 249, 251, .94));
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(340px, .92fr);
+      gap: 52px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      width: fit-content;
+      border: 1px solid rgba(255, 255, 255, .36);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, .12);
+    }
+
+    h1, h2, h3, h4, p { margin: 0; }
+
+    h1 {
+      margin-top: 22px;
+      font-size: clamp(42px, 7vw, 84px);
+      line-height: .98;
+      letter-spacing: 0;
+      max-width: 900px;
+    }
+
+    .hero-lede {
+      max-width: 760px;
+      margin-top: 24px;
+      font-size: clamp(17px, 2vw, 22px);
+      color: rgba(255, 255, 255, .9);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 10px 14px;
+      border-radius: 7px;
+      border: 1px solid rgba(255, 255, 255, .38);
+      background: white;
+      color: #063d71;
+      font-weight: 750;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .button.secondary {
+      color: white;
+      background: rgba(255, 255, 255, .12);
+    }
+
+    .hero-panel {
+      background: rgba(255, 255, 255, .14);
+      border: 1px solid rgba(255, 255, 255, .3);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      padding: 22px;
+    }
+
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .metric {
+      min-height: 96px;
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, .24);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .12);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 32px;
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 8px;
+      color: rgba(255, 255, 255, .84);
+      font-size: 13px;
+    }
+
+    .section {
+      padding: 70px 0;
+      background: rgba(255, 255, 255, .72);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section.alt { background: rgba(242, 247, 252, .88); }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(280px, .65fr);
+      gap: 32px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .subhead {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .controls {
+      position: sticky;
+      top: 0;
+      z-index: 4;
+      background: rgba(255, 255, 255, .92);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+    }
+
+    .controls-inner {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+    }
+
+    .nav {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    .nav a, .tool {
+      white-space: nowrap;
+      border: 1px solid var(--line);
+      background: var(--white);
+      border-radius: 999px;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 14px;
+    }
+
+    .tool {
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .search {
+      width: min(260px, 32vw);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 14px;
+      color: var(--ink);
+      background: white;
+    }
+
+    .language-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .block {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: 0 8px 22px rgba(24, 45, 72, .05);
+    }
+
+    .block h3 {
+      font-size: 20px;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .block .tag {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 10px;
+      border-radius: 999px;
+      padding: 4px 8px;
+      background: rgba(7, 136, 242, .1);
+      color: var(--blue-dark);
+      font-size: 12px;
+      font-weight: 760;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .toc-item {
+      display: grid;
+      align-content: space-between;
+      min-height: 138px;
+      padding: 18px;
+      border-radius: var(--radius);
+      color: white;
+      text-decoration: none;
+      background: linear-gradient(150deg, #083a67, #098df0);
+      box-shadow: var(--shadow);
+    }
+
+    .toc-item:nth-child(2n) { background: linear-gradient(150deg, #075f72, #0aa887); }
+    .toc-item:nth-child(3n) { background: linear-gradient(150deg, #3d526c, #0b7ac2); }
+
+    .toc-item strong {
+      font-size: 22px;
+      line-height: 1.1;
+    }
+
+    .toc-item span { color: rgba(255, 255, 255, .82); font-size: 13px; }
+
+    .process {
+      counter-reset: step;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .step {
+      counter-increment: step;
+      position: relative;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      min-height: 210px;
+    }
+
+    .step::before {
+      content: counter(step, decimal-leading-zero);
+      display: inline-grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      margin-bottom: 14px;
+      border-radius: 50%;
+      color: white;
+      background: var(--blue);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .step h3 { font-size: 18px; line-height: 1.25; margin-bottom: 8px; }
+
+    .asset-section {
+      display: grid;
+      grid-template-columns: 230px minmax(0, 1fr);
+      gap: 24px;
+      padding: 26px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .asset-title {
+      position: sticky;
+      top: 78px;
+      align-self: start;
+    }
+
+    .asset-title h3 { font-size: 28px; line-height: 1.1; }
+    .asset-title p { color: var(--muted); margin-top: 8px; }
+
+    .asset-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    details {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 16px 18px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::after {
+      content: "+";
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: var(--blue);
+      flex: 0 0 auto;
+    }
+
+    details[open] summary::after { content: "-"; }
+
+    .detail-body {
+      border-top: 1px solid var(--line);
+      padding: 16px 18px 18px;
+      color: var(--muted);
+    }
+
+    ul {
+      padding-left: 18px;
+      margin: 10px 0 0;
+    }
+
+    li { margin: 6px 0; }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: .92em;
+      background: rgba(7, 136, 242, .09);
+      color: #074a88;
+      border-radius: 4px;
+      padding: 2px 5px;
+    }
+
+    .matrix {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 8px 22px rgba(24, 45, 72, .05);
+    }
+
+    .matrix th, .matrix td {
+      border: 1px solid var(--line);
+      padding: 12px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .matrix th {
+      background: #eaf3fb;
+      color: #153650;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: 12px;
+      font-weight: 800;
+      background: rgba(10, 143, 118, .1);
+      color: var(--green);
+    }
+
+    .badge.warn { background: rgba(182, 107, 0, .12); color: var(--amber); }
+    .badge.stop { background: rgba(196, 61, 50, .1); color: var(--red); }
+
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .check {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      min-height: 170px;
+    }
+
+    .check strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    footer {
+      padding: 34px 0 50px;
+      color: var(--muted);
+      background: #101820;
+    }
+
+    footer .shell {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      color: rgba(255, 255, 255, .75);
+    }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .section-head,
+      .language-grid,
+      .asset-section {
+        grid-template-columns: 1fr;
+      }
+
+      .hero { min-height: auto; }
+      .hero-panel { max-width: 620px; }
+      .toc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .process { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .asset-title { position: static; }
+      .asset-grid { grid-template-columns: 1fr; }
+      .checklist { grid-template-columns: 1fr; }
+      .search { width: 100%; }
+      .controls-inner { align-items: stretch; flex-direction: column; }
+    }
+
+    @media (max-width: 560px) {
+      .shell { width: min(100% - 24px, 1180px); }
+      .hero { padding-top: 34px; }
+      .status-grid,
+      .toc-grid,
+      .process {
+        grid-template-columns: 1fr;
+      }
+      .section { padding: 52px 0; }
+      .matrix { font-size: 13px; }
+      .matrix th, .matrix td { padding: 9px; }
+      footer .shell { display: block; }
+    }
+
+    @media print {
+      .controls, .hero-actions { display: none; }
+      body { background: white; }
+      .hero { min-height: auto; color: var(--ink); background: white; border-bottom: 2px solid var(--line); }
+      .hero::after { display: none; }
+      .hero-panel { background: white; color: var(--ink); border-color: var(--line); box-shadow: none; }
+      .metric { background: white; color: var(--ink); border-color: var(--line); }
+      .metric span, .hero-lede { color: var(--muted); }
+      .section { break-inside: avoid; background: white; }
+      details { break-inside: avoid; }
+      details:not([open]) .detail-body { display: block; }
+      details:not([open]) { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" id="top">
+    <div class="shell hero-grid">
+      <div>
+        <div class="eyebrow">OneLaser Brand Asset SOP | 品牌资产管理标准流程</div>
+        <h1>Product-first brand asset system</h1>
+        <p class="hero-lede">
+          以产品系列为主线，统一 OneLaser 品牌资产的创建、命名、审批、归档、发布与复盘。This SOP turns product-led asset folders into a repeatable operating system for faster launches, cleaner reuse, and fewer version mistakes.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="#sop">Start SOP / 查看流程</a>
+          <a class="button secondary" href="#assets">Asset Index / 资产索引</a>
+          <button class="button secondary" type="button" onclick="window.print()">Print / 导出 PDF</button>
+        </div>
+      </div>
+      <aside class="hero-panel" aria-label="SOP summary">
+        <div class="status-grid">
+          <div class="metric"><strong>9</strong><span>产品与品牌一级目录 / Product and brand groups</span></div>
+          <div class="metric"><strong>36</strong><span>Cobra 资产节点 / Cobra asset nodes</span></div>
+          <div class="metric"><strong>8</strong><span>资产生命周期步骤 / Lifecycle steps</span></div>
+          <div class="metric"><strong>2</strong><span>语言版本 / Chinese and English</span></div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <nav class="controls" aria-label="Page navigation">
+    <div class="shell controls-inner">
+      <div class="nav">
+        <a href="#principles">原则</a>
+        <a href="#sop">流程</a>
+        <a href="#assets">资产目录</a>
+        <a href="#naming">命名</a>
+        <a href="#governance">权限审批</a>
+        <a href="#checklist">检查表</a>
+      </div>
+      <input class="search" id="searchInput" type="search" placeholder="Search / 搜索目录与规则">
+    </div>
+  </nav>
+
+  <main>
+    <section class="section" id="principles">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Operating Principles<br>管理原则</h2>
+          <p class="subhead">所有资产都围绕产品、渠道、版本和使用状态管理，避免“找不到、拿错版、重复做、不能复用”。</p>
+        </div>
+        <div class="language-grid searchable">
+          <article class="block">
+            <span class="tag">中文</span>
+            <h3>OneLaser 品牌资产管理目标</h3>
+            <p>建立一个以产品系列为核心的品牌资产管理 SOP，覆盖 Brand、Cobra、Hydra Gen1、Hydra Gen2、XRF、VertiGo、New Product、AllSeries、Accessories 等一级目录。每一份资产必须能回答四个问题：属于哪个产品或品牌层级、服务哪个渠道、当前是否可发布、谁负责维护。</p>
+          </article>
+          <article class="block">
+            <span class="tag">English</span>
+            <h3>OneLaser brand asset objective</h3>
+            <p>Build a product-first SOP for managing OneLaser brand assets across Brand, Cobra, Hydra Gen1, Hydra Gen2, XRF, VertiGo, New Product, AllSeries, and Accessories. Every asset must clearly show its product owner, channel use, release status, and maintenance owner.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="index">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Primary Index<br>一级目录</h2>
+          <p class="subhead">一级目录以产品线为主，Index 作为全局索引，Brand 作为品牌基础资产入口。新产品先进入 New Product，发布稳定后再迁移为独立产品目录；Archive 是补充治理目录。</p>
+        </div>
+        <div class="toc-grid searchable">
+          <a class="toc-item" href="#globalindex"><strong>00 Index</strong><span>Asset ID, owner, status, version, path, rights</span></a>
+          <a class="toc-item" href="#brand"><strong>Brand</strong><span>VIS, logo, typefaces, brand merchandise</span></a>
+          <a class="toc-item" href="#cobra"><strong>Cobra</strong><span>GTM, SEM, social, collateral, product assets</span></a>
+          <a class="toc-item" href="#hydra1"><strong>Hydra Gen1</strong><span>Legacy product asset set</span></a>
+          <a class="toc-item" href="#hydra2"><strong>Hydra Gen2</strong><span>Current product asset set</span></a>
+          <a class="toc-item" href="#xrf"><strong>XRF</strong><span>Product launch and channel assets</span></a>
+          <a class="toc-item" href="#vertigo"><strong>VertiGo</strong><span>Product content and sales materials</span></a>
+          <a class="toc-item" href="#newproduct"><strong>New Product</strong><span>Pre-launch staging area</span></a>
+          <a class="toc-item" href="#allseries"><strong>AllSeries</strong><span>Cross-product comparison assets</span></a>
+          <a class="toc-item" href="#accessories"><strong>Accessories</strong><span>Parts, kits, bundles, add-ons</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sop">
+      <div class="shell">
+        <div class="section-head">
+          <h2>SOP Workflow<br>标准流程</h2>
+          <p class="subhead">从需求创建到归档复盘，所有渠道都走同一套生命周期；差异只体现在交付规格和审批人。</p>
+        </div>
+        <div class="process searchable">
+          <article class="step">
+            <h3>Brief / 需求</h3>
+            <p>确认产品、渠道、目标受众、交付规格、截止时间和负责人。No asset work starts without a product, channel, format, due date, and owner.</p>
+          </article>
+          <article class="step">
+            <h3>Source / 素材</h3>
+            <p>收集官方图、客户图、3D、文案、参数和合规声明。Use approved source material before generating derivative assets.</p>
+          </article>
+          <article class="step">
+            <h3>Create / 制作</h3>
+            <p>按渠道模板制作，并保留源文件。Keep editable source files for web, ads, brochure, social, and sales collateral.</p>
+          </article>
+          <article class="step">
+            <h3>Review / 审核</h3>
+            <p>品牌、产品、市场、销售按风险审核。Brand, product, marketing, and sales approve based on asset risk.</p>
+          </article>
+          <article class="step">
+            <h3>Release / 发布</h3>
+            <p>仅发布 Approved 文件夹中的资产。Only assets in Approved are allowed for public or client-facing use.</p>
+          </article>
+          <article class="step">
+            <h3>Distribute / 分发</h3>
+            <p>按渠道同步到官网、Amazon、广告账户、销售资料库或社媒排期。Distribute to the correct channel repository.</p>
+          </article>
+          <article class="step">
+            <h3>Measure / 复盘</h3>
+            <p>记录使用渠道、投放表现、客户反馈和复用机会。Capture performance, feedback, and reuse signals.</p>
+          </article>
+          <article class="step">
+            <h3>Archive / 归档</h3>
+            <p>过期、替换、暂停使用的资产进入 Archive，禁止继续外发。Retired assets are archived and marked unavailable.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="assets">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Asset Directory SOP<br>资产目录规范</h2>
+          <p class="subhead">以下目录按照产品线一级目录版 SOP 展开：先按产品线归档，再在每个产品线内部按渠道、物料类型和制作阶段归档。</p>
+        </div>
+
+        <div class="asset-section searchable" id="globalindex">
+          <div class="asset-title">
+            <h3>00 Index</h3>
+            <p>全资产导航、编号、版本、状态和路径索引。</p>
+          </div>
+          <div class="asset-grid">
+            <details open>
+              <summary>Asset Index / 资产索引表</summary>
+              <div class="detail-body">
+                <p>Index 是整个资产库的控制中心，用于记录 Asset ID、Product Line、Asset Type、Channel、Language、Version、Status、Owner、Reviewer、File Path、Source Path、Publish Link、Usage Rights、Created Date、Last Updated 和 Notes。</p>
+                <ul>
+                  <li>English: The Index is the single navigation layer for asset ID, product line, type, channel, language, version, status, owner, reviewer, path, source, live link, rights, and update history.</li>
+                  <li>Rule: Approved, Live, and Published assets must be traceable in the Index before use.</li>
+                </ul>
+              </div>
+            </details>
+            <details>
+              <summary>Suggested Files / 建议文件</summary>
+              <div class="detail-body">
+                <p>建议维护四类基础文件：资产索引表、资产地图、文件命名规则、资产状态规则。</p>
+                <ul>
+                  <li><code>ONELASER_Asset_Index_EN-CN_2026Q2_v1.xlsx</code></li>
+                  <li><code>ONELASER_Asset_Map_2026Q2_v1.pdf</code></li>
+                  <li><code>ONELASER_File_Naming_Rules_2026Q2_v1.pdf</code></li>
+                  <li><code>ONELASER_Asset_Status_Rules_2026Q2_v1.pdf</code></li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="asset-section searchable" id="brand">
+          <div class="asset-title">
+            <h3>Brand</h3>
+            <p>母品牌资产，不归属于单一产品。</p>
+          </div>
+          <div class="asset-grid">
+            <details open>
+              <summary>VIS / 视觉识别系统</summary>
+              <div class="detail-body">
+                <p>包含 LOGO、Brand Typefaces 品牌字体、VIS Manual。Logo 文件必须保留横版、竖版、单色、反白、图标版；字体需标明授权范围；VIS Manual 作为所有渠道视觉判断依据。</p>
+                <ul>
+                  <li>English: Store logo masters, brand typefaces, and the VIS manual. Include usage rules, clear space, color values, and prohibited applications.</li>
+                  <li>Owner: Brand Design. Approval: Marketing Lead.</li>
+                </ul>
+              </div>
+            </details>
+            <details>
+              <summary>Engraved Finished Product Photos / 雕刻成品照片</summary>
+              <div class="detail-body">
+                <p>分为 Official Releases 官方出品、Client Images 客户图片、AIGC。客户图片必须记录授权状态；AIGC 必须标注生成日期、提示词用途和不得用于参数证明。</p>
+                <ul>
+                  <li>English: Separate official releases, client images, and AI-generated images. Client images require usage permission. AI images cannot be used as performance proof.</li>
+                  <li>Status labels: Raw, Retouched, Approved, Restricted.</li>
+                </ul>
+              </div>
+            </details>
+            <details>
+              <summary>Brand Merchandise Design / 品牌周边设计</summary>
+              <div class="detail-body">
+                <p>用于展会、客户礼品、内部活动和渠道伙伴包。必须保留效果图、打样图、供应商文件和最终生产文件。</p>
+                <ul>
+                  <li>English: Manage merchandise mockups, samples, vendor-ready files, and final production files.</li>
+                  <li>Required: product mockup, source file, print spec, vendor contact, production date.</li>
+                </ul>
+              </div>
+            </details>
+            <details>
+              <summary>Brand Compliance / 品牌合规</summary>
+              <div class="detail-body">
+                <p>任何修改 Logo、品牌色、字体、品牌口号、品牌承诺的资产都必须进入 Brand Review。未经审批不得在官网、广告、展会或销售材料中使用。</p>
+                <ul>
+                  <li>English: Any asset that changes logo, color, typography, slogan, or brand claims requires brand review before release.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="asset-section searchable" id="cobra">
+          <div class="asset-title">
+            <h3>Cobra</h3>
+            <p>SOP 中最完整的产品目录模板，其它产品线按此复制。</p>
+          </div>
+          <div class="asset-grid">
+            <details open>
+              <summary>GTM / 上市策略</summary>
+              <div class="detail-body">
+                <p>保存产品定位、目标人群、核心卖点、竞品对比、渠道计划、上市时间表和发布复盘。GTM 是所有后续资产的源头。</p>
+                <ul>
+                  <li>English: Store positioning, audience, value proposition, competitor comparison, channel plan, launch timeline, and post-launch review.</li>
+                  <li>Deliverables: GTM brief, messaging house, launch calendar, launch retrospective.</li>
+                </ul>
+              </div>
+            </details>
+            <details>
+              <summary>SEM / 搜索广告</summary>
+              <div class="detail-body">
+                <p>包含关键词、广告文案、落地页版本、素材尺寸、UTM、投放截图和表现复盘。与网页设计目录中的 Live Page 保持链接。</p>
+                <ul>
+                  <li>English: Manage keywords, ad copy, landing pages, creative sizes, UTM rules, campaign screenshots, and performance notes.</li>
+                </ul>
+              </div>
+            </details>
+            <details>
+              <summary>Social / 社媒内容</summary>
+              <div class="detail-body">
+                <p>渠道包括 TikTok、Instagram、YouTube；KOL 子目录保存 Influencer & Creator Content 网红和创作者内容。所有外部创作者内容必须附授权范围。</p>
+                <ul>
+                  <li>English: Organize platform-ready content for TikTok, Instagram, YouTube, and KOL collaborations. Influencer content requires rights, term, territory, and usage channel.</li>
+                  <li>Required folders: Scripts, Raw Footage, Edited, Captions, Thumbnails, Approved.</li>
+                </ul>
+              </div>
+            </details>
+            <details>
+              <summary>Sales Collateral / 销售资料</summary>
+              <div class="detail-body">
+                <p>包含 Merchandise Design 周边产品设计、Ads 广告、Email 邮件。Ads 下按 Meta 和 Google 分开，Meta 覆盖 Facebook and Instagram paid ads，Google 覆盖 Google Ads、YouTube、Display。</p>
+                <ul>
+                  <li>English: Separate merchandise, ads, and email assets. Split paid ads by Meta and Google to prevent platform spec confusion.</li>
+                  <li>Sales-use files must be exported as PDF, PNG/JPG, and editable source where relevant.</li>
+                </ul>
+              </div>
+            </details>
+            <details>
+              <summary>Campaigns / 活动</summary>
+              <div class="detail-body">
+                <p>保存促销、节日、展会、渠道活动、联名活动和新品预热。每个 Campaign 目录必须包含 Brief、Creative、Media Plan、Approved、Report。</p>
+                <ul>
+                  <li>English: Use campaign folders for promotion, holiday, event, partner, and teaser work. Every campaign needs a brief, creative assets, media plan, approved exports, and report.</li>
+                </ul>
+              </div>
+            </details>
+            <details>
+              <summary>Product / 产品资产</summary>
+              <div class="detail-body">
+                <p>这是 Cobra 的核心目录。包含 Brochure 宣传册、Video 视频、3D Renders 3D 渲染图、3D Model，以及 Web Design 网页设计、Amazon Storefront Design 亚马逊店铺设计。</p>
+                <ul>
+                  <li>English: The product folder is the source of truth for brochure, video, 3D renders, 3D models, web design, and Amazon storefront assets.</li>
+                  <li>Examples from SOP: <code>ONELASER_Cobra_Brochure_EN_2026Q2_v2</code>, <code>ONELASER_Cobra10_3DModel_EN_2026Q2_v1</code>.</li>
+                </ul>
+              </div>
+            </details>
+            <details>
+              <summary>Web Design / 网页设计</summary>
+              <div class="detail-body">
+                <p>包含 Figma Link、Teaser Page、Live Page。Live Page 下保存 Banner、Hero & Secondary Images 主副图、Cropped Assets 切图、Mobile 手机端、Desktop 电脑端、Source Files 源文件。</p>
+                <ul>
+                  <li>English: Web design must keep Figma links, teaser pages, live pages, banners, hero and secondary images, cropped assets, mobile, desktop, and source files.</li>
+                  <li>Source file types: PSD, AI, Figma, video project, 3D project, copy doc.</li>
+                </ul>
+              </div>
+            </details>
+            <details>
+              <summary>Amazon Storefront / 亚马逊店铺</summary>
+              <div class="detail-body">
+                <p>保存店铺模块图、A+ 内容、主图、详情图、尺寸导出、合规文本和上架截图。与 Product 和 Sales Collateral 共享素材，但最终导出独立存档。</p>
+                <ul>
+                  <li>English: Storefront assets include module images, A+ content, listing images, exported sizes, compliance copy, and live screenshots.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="asset-section searchable" id="hydra1">
+          <div class="asset-title">
+            <h3>Hydra Gen1</h3>
+            <p>旧产品或上一代产品资产。</p>
+          </div>
+          <div class="asset-grid">
+            <details open>
+              <summary>Lifecycle / 生命周期</summary>
+              <div class="detail-body">
+                <p>Hydra Gen1 应标注当前销售状态：Active、Limited Support、Discontinued。所有新制作资产必须注明是否继续对外使用。</p>
+                <ul><li>English: Mark lifecycle status clearly so old product material is not reused as current product content by mistake.</li></ul>
+              </div>
+            </details>
+            <details>
+              <summary>Migration / 迁移</summary>
+              <div class="detail-body">
+                <p>若 Hydra Gen2 已替代同一卖点，Gen1 资产需要在标题或说明中加入 Replacement Note，指向 Gen2 对应资产。</p>
+                <ul><li>English: Add replacement notes that point from Gen1 assets to the current Gen2 equivalents when applicable.</li></ul>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="asset-section searchable" id="hydra2">
+          <div class="asset-title">
+            <h3>Hydra Gen2</h3>
+            <p>当前产品线资产。</p>
+          </div>
+          <div class="asset-grid">
+            <details open>
+              <summary>Product Template / 产品模板</summary>
+              <div class="detail-body">
+                <p>Hydra Gen2 使用 Cobra 的完整目录模板：GTM、SEM、Social、Sales Collateral、Campaigns、Product、Web Design、Amazon Storefront。</p>
+                <ul><li>English: Apply the Cobra template to maintain consistent launch and channel asset operations.</li></ul>
+              </div>
+            </details>
+            <details>
+              <summary>Version Priority / 版本优先级</summary>
+              <div class="detail-body">
+                <p>如 Gen2 与 Gen1 存在同名素材，默认以 Gen2 为公开使用版本。Gen1 仅用于历史、售后或特定经销商沟通。</p>
+                <ul><li>English: Gen2 is the default public version when Gen1 and Gen2 have similar assets.</li></ul>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="asset-section searchable" id="xrf">
+          <div class="asset-title">
+            <h3>XRF</h3>
+            <p>产品资产与销售渠道并重。</p>
+          </div>
+          <div class="asset-grid">
+            <details open>
+              <summary>Required Set / 必备资产包</summary>
+              <div class="detail-body">
+                <p>XRF 至少需要 Brochure、Product Photos、Video、Web Hero、Sales Deck、FAQ、Ads、Email、Amazon Storefront。涉及参数和结果证明的内容必须经产品负责人确认。</p>
+                <ul><li>English: Claims, parameters, and proof images require product-owner approval before release.</li></ul>
+              </div>
+            </details>
+            <details>
+              <summary>Claim Control / 卖点管控</summary>
+              <div class="detail-body">
+                <p>性能、精度、材料兼容性、速度等表达统一放入 Messaging House，广告和销售材料不得自行改写核心声明。</p>
+                <ul><li>English: Performance claims must come from the approved messaging house.</li></ul>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="asset-section searchable" id="vertigo">
+          <div class="asset-title">
+            <h3>VertiGo</h3>
+            <p>产品内容和渠道资料。</p>
+          </div>
+          <div class="asset-grid">
+            <details open>
+              <summary>Channel Pack / 渠道包</summary>
+              <div class="detail-body">
+                <p>VertiGo 目录需提供渠道伙伴可直接使用的图片、短视频、单页、FAQ、参数表、邮件模板和社媒文案。</p>
+                <ul><li>English: Provide ready-to-use partner packs with images, short video, one-pager, FAQ, spec sheet, email templates, and social copy.</li></ul>
+              </div>
+            </details>
+            <details>
+              <summary>Localization / 本地化</summary>
+              <div class="detail-body">
+                <p>多语言资产按照语言码分开，如 EN、DE、FR、ES、ZH。不得把翻译中的版本放入 Approved。</p>
+                <ul><li>English: Keep localization files by language code and only release reviewed translations.</li></ul>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="asset-section searchable" id="newproduct">
+          <div class="asset-title">
+            <h3>New Product</h3>
+            <p>新品预发布暂存区。</p>
+          </div>
+          <div class="asset-grid">
+            <details open>
+              <summary>Confidential Staging / 保密暂存</summary>
+              <div class="detail-body">
+                <p>所有未正式命名或未发布新品先进入 New Product。文件夹名称使用项目代号，不在公开资产中暴露最终命名、价格、发布日期或技术参数。</p>
+                <ul><li>English: Use project codenames before official launch. Do not expose final naming, pricing, launch date, or specs in public-facing exports.</li></ul>
+              </div>
+            </details>
+            <details>
+              <summary>Graduation / 转正</summary>
+              <div class="detail-body">
+                <p>新品完成品牌命名、产品定位、首批资产和上市审批后，从 New Product 迁移为独立一级目录或并入现有产品线。</p>
+                <ul><li>English: Move a new product into its own primary folder only after naming, positioning, first asset set, and launch approval are complete.</li></ul>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="asset-section searchable" id="allseries">
+          <div class="asset-title">
+            <h3>AllSeries</h3>
+            <p>跨产品系列资产。</p>
+          </div>
+          <div class="asset-grid">
+            <details open>
+              <summary>Comparison Assets / 对比资料</summary>
+              <div class="detail-body">
+                <p>保存产品矩阵、系列对比、购买指南、应用场景汇总、官网集合页和全系列宣传册。参数来自各产品负责人确认后的最新版。</p>
+                <ul><li>English: Use this folder for product comparison, buying guides, application overviews, collection pages, and all-series brochures.</li></ul>
+              </div>
+            </details>
+            <details>
+              <summary>Shared Claims / 共用卖点</summary>
+              <div class="detail-body">
+                <p>如使用“全系列适用”的声明，必须确认每个产品型号都符合，不允许用单一产品表现代表全系列。</p>
+                <ul><li>English: All-series claims must be true for every included model.</li></ul>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="asset-section searchable" id="accessories">
+          <div class="asset-title">
+            <h3>Accessories</h3>
+            <p>配件、套装和附加产品。</p>
+          </div>
+          <div class="asset-grid">
+            <details open>
+              <summary>Accessory Mapping / 配件映射</summary>
+              <div class="detail-body">
+                <p>每个配件需标注适配产品、SKU、图片、应用场景、安装说明、兼容限制和上架素材。与主产品共享图片时必须保留引用路径。</p>
+                <ul><li>English: Every accessory needs compatible products, SKU, images, use cases, install notes, compatibility limits, and listing assets.</li></ul>
+              </div>
+            </details>
+            <details>
+              <summary>Bundle Assets / 套装资产</summary>
+              <div class="detail-body">
+                <p>套装图必须显示包含物、适配关系和购买价值。不同市场价格或配置不同，按区域建立子目录。</p>
+                <ul><li>English: Bundle assets must show included items, compatibility, and buying value. Split by region when configuration differs.</li></ul>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="naming">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Naming and Versioning<br>命名与版本</h2>
+          <p class="subhead">统一命名是防止拿错资产的第一道防线。文件名必须让非设计人员也能判断用途。</p>
+        </div>
+        <table class="matrix searchable">
+          <thead>
+            <tr>
+              <th>Rule / 规则</th>
+              <th>Chinese / 中文</th>
+              <th>English</th>
+              <th>Example / 示例</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge">Required</span> Filename</td>
+              <td>品牌_产品_资产类型_渠道_语言_日期或季度_版本</td>
+              <td>Brand_Product_AssetType_Channel_Language_DateOrQuarter_Version</td>
+              <td><code>ONELASER_Cobra_Brochure_Web_EN_2026Q2_v2.pdf</code></td>
+            </tr>
+            <tr>
+              <td><span class="badge">Required</span> Status</td>
+              <td>每个项目使用 Working、Review、Approved、Published、Archive。</td>
+              <td>Use Working, Review, Approved, Published, and Archive for every project.</td>
+              <td><code>/Cobra/Product/Brochure/Approved/</code></td>
+            </tr>
+            <tr>
+              <td><span class="badge warn">Controlled</span> Source</td>
+              <td>源文件和导出文件分开放，源文件不得直接给外部客户。</td>
+              <td>Separate source files from exported assets. Do not share source files externally by default.</td>
+              <td><code>/Source Files/</code>, <code>/Exports/</code></td>
+            </tr>
+            <tr>
+              <td><span class="badge stop">Do not use</span> Draft</td>
+              <td>禁止使用 final、new、latest、修改版、最终终版等不可追踪命名。</td>
+              <td>Avoid untraceable names such as final, new, latest, revised, or final-final.</td>
+              <td><code>v1</code>, <code>v2</code>, <code>v3</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section alt" id="governance">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Governance<br>权限与审批</h2>
+          <p class="subhead">把“谁能改、谁能批、谁能发”写清楚，避免品牌资产在多个渠道失控。</p>
+        </div>
+        <table class="matrix searchable">
+          <thead>
+            <tr>
+              <th>Role / 角色</th>
+              <th>Responsibility / 职责</th>
+              <th>Approval Scope / 审批范围</th>
+              <th>SLA / 时限</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Brand Owner<br>品牌负责人</td>
+              <td>维护 VIS、品牌一致性、Logo 使用、字体与品牌语气。</td>
+              <td>母品牌、官网首页、广告主视觉、展会主视觉。</td>
+              <td>2 working days</td>
+            </tr>
+            <tr>
+              <td>Product Owner<br>产品负责人</td>
+              <td>确认参数、卖点、技术声明、适配关系和产品生命周期。</td>
+              <td>Brochure、FAQ、详情页、销售资料、产品对比。</td>
+              <td>2 working days</td>
+            </tr>
+            <tr>
+              <td>Marketing Lead<br>市场负责人</td>
+              <td>确认渠道目标、活动策略、广告信息和投放素材。</td>
+              <td>GTM、SEM、Social、Campaigns、Email、Ads。</td>
+              <td>1 to 2 working days</td>
+            </tr>
+            <tr>
+              <td>Design Owner<br>设计负责人</td>
+              <td>制作、导出、归档源文件，保证命名、规格、切图和版本正确。</td>
+              <td>设计源文件、网页素材、社媒图、广告图、包装与周边。</td>
+              <td>Per project brief</td>
+            </tr>
+            <tr>
+              <td>Sales Owner<br>销售负责人</td>
+              <td>反馈客户和渠道伙伴使用情况，提出缺口和更新需求。</td>
+              <td>Sales collateral、dealer pack、case study、客户图。</td>
+              <td>Weekly feedback</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="checklist">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Release Checklist<br>发布检查表</h2>
+          <p class="subhead">任何资产进入 Approved 或 Published 前，至少完成以下检查。</p>
+        </div>
+        <div class="checklist searchable">
+          <article class="check">
+            <strong>Brand / 品牌</strong>
+            <p>Logo、颜色、字体、版式、品牌语气符合 VIS Manual。No distorted logo, wrong color, unlicensed font, or off-brand tone.</p>
+          </article>
+          <article class="check">
+            <strong>Product / 产品</strong>
+            <p>型号、参数、卖点、兼容性、价格和使用场景已由产品负责人确认。Claims are accurate and approved.</p>
+          </article>
+          <article class="check">
+            <strong>Channel / 渠道</strong>
+            <p>尺寸、比例、文件格式、文案长度、平台限制符合发布渠道要求。Exports match platform specs.</p>
+          </article>
+          <article class="check">
+            <strong>Rights / 权利</strong>
+            <p>客户图片、KOL 内容、音乐、字体、AIGC、第三方素材均记录授权范围。Usage rights are traceable.</p>
+          </article>
+          <article class="check">
+            <strong>Files / 文件</strong>
+            <p>源文件、导出文件、预览图、文案和链接完整，命名符合规则。Source and export files are complete.</p>
+          </article>
+          <article class="check">
+            <strong>Version / 版本</strong>
+            <p>旧版本已移入 Archive 或标注 Superseded，不再对外分发。Old versions are retired or marked clearly.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="archive">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Maintenance Rhythm<br>维护节奏</h2>
+          <p class="subhead">SOP 不是一次性整理，而是每次发布、每周、每月、每季都要轻量维护。</p>
+        </div>
+        <table class="matrix searchable">
+          <thead>
+            <tr>
+              <th>Frequency / 频率</th>
+              <th>Action / 动作</th>
+              <th>Output / 产出</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Per release<br>每次发布</td>
+              <td>检查命名、审批、渠道规格、源文件和导出文件。</td>
+              <td>Approved asset pack and release note.</td>
+            </tr>
+            <tr>
+              <td>Weekly<br>每周</td>
+              <td>收集销售、广告、社媒和官网的资产缺口。</td>
+              <td>Asset request queue.</td>
+            </tr>
+            <tr>
+              <td>Monthly<br>每月</td>
+              <td>清理重复文件、错误版本和未使用草稿。</td>
+              <td>Clean folder index and archive log.</td>
+            </tr>
+            <tr>
+              <td>Quarterly<br>每季度</td>
+              <td>复盘产品线资产完整度、渠道表现和下一季度资产计划。</td>
+              <td>Quarterly brand asset review.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <p>OneLaser Brand Asset Management SOP</p>
+      <p>Version 2.0 | 2026-05-20 | Product-line-first bilingual web edition</p>
+    </div>
+  </footer>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const searchable = Array.from(document.querySelectorAll('.searchable'));
+
+    searchInput.addEventListener('input', () => {
+      const term = searchInput.value.trim().toLowerCase();
+      searchable.forEach((node) => {
+        const match = node.textContent.toLowerCase().includes(term);
+        node.classList.toggle('hidden', term.length > 0 && !match);
+      });
+    });
+  </script>
+</body>
+</html>
