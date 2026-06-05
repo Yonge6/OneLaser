@@ -3,85 +3,955 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="0; url=https://yonge6.github.io/Design/english-quote-log/">
-  <title>AI驱动英语听说</title>
+  <title>英语听说产品共创计划 2026Q2</title>
+  <meta name="description" content="每天 15-45 分钟，用短视频、大模型跟读纠音和真人英语老师深度参与产品的共创和群内指导练真实英语口语。微信 yonge6。">
   <style>
     :root {
-      --paper: #f7f1e6;
-      --ink: #151515;
-      --muted: #6b6257;
-      --yellow: #efc35a;
-      --green: #2f6d55;
+      --paper: #fbf7ef;
+      --ink: #161814;
+      --muted: #686c65;
+      --green: #1f7a5a;
+      --green-dark: #14513d;
+      --coral: #df674f;
+      --sun: #f2bf4b;
+      --blue: #356f9f;
+      --mint: #dceee4;
+      --white: #fffdf8;
+      --line: rgba(22, 24, 20, 0.16);
+      --shadow: 8px 8px 0 #161814;
       --radius: 8px;
+      --serif: Georgia, "Times New Roman", "Songti SC", serif;
       --sans: "Avenir Next", "PingFang SC", "Microsoft YaHei", sans-serif;
-      --serif: Georgia, "Times New Roman", serif;
     }
 
     * { box-sizing: border-box; }
 
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 24px;
       font-family: var(--sans);
       color: var(--ink);
       background:
-        linear-gradient(90deg, rgba(21,21,21,0.045) 1px, transparent 1px),
-        linear-gradient(rgba(21,21,21,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22,24,20,0.045) 1px, transparent 1px),
+        linear-gradient(rgba(22,24,20,0.04) 1px, transparent 1px),
         var(--paper);
-      background-size: 26px 26px;
+      background-size: 28px 28px;
+      letter-spacing: 0;
     }
 
-    main {
-      width: min(620px, 100%);
+    a { color: inherit; }
+    h1, h2, h3, p { margin: 0; }
+
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 2px solid var(--ink);
+      background: rgba(251, 247, 239, 0.92);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-inner {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
       border: 2px solid var(--ink);
-      border-radius: var(--radius);
-      background: rgba(255, 250, 240, 0.94);
-      box-shadow: 6px 6px 0 var(--ink);
-      padding: 24px;
+      border-radius: 50%;
+      background: var(--sun);
+      display: grid;
+      place-items: center;
+      box-shadow: 3px 3px 0 var(--ink);
+      flex: 0 0 auto;
     }
 
-    h1 {
-      margin: 0;
+    .brand-mark span {
+      display: block;
       font-family: var(--serif);
-      font-size: clamp(30px, 7vw, 46px);
-      line-height: 1.06;
+      font-size: 22px;
+      line-height: 1;
     }
 
-    p {
-      margin: 12px 0 0;
+    .brand small {
+      display: block;
       color: var(--muted);
-      font-size: 15px;
-      line-height: 1.7;
+      font-weight: 700;
+      margin-top: 2px;
     }
 
-    a {
-      margin-top: 18px;
-      min-height: 50px;
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover { color: var(--green-dark); }
+
+    .btn {
+      min-height: 46px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      gap: 8px;
       border: 2px solid var(--ink);
       border-radius: var(--radius);
-      background: var(--yellow);
+      background: var(--white);
       color: var(--ink);
-      box-shadow: 4px 4px 0 var(--ink);
       padding: 0 18px;
       text-decoration: none;
       font-weight: 900;
+      box-shadow: 4px 4px 0 var(--ink);
+      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+
+    .btn:hover {
+      transform: translate(1px, 1px);
+      box-shadow: 3px 3px 0 var(--ink);
+    }
+
+    .btn:active {
+      transform: translate(4px, 4px);
+      box-shadow: 0 0 0 var(--ink);
+    }
+
+    .btn.primary { background: var(--green); color: white; }
+    .btn.sun { background: var(--sun); }
+
+    .hero {
+      padding: 58px 0 42px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(310px, 0.85fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-main,
+    .contact-card,
+    .panel,
+    .price-card {
+      border: 2px solid var(--ink);
+      border-radius: var(--radius);
+      background: rgba(255, 253, 248, 0.82);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-main {
+      padding: clamp(26px, 5vw, 54px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-main:after {
+      content: "";
+      position: absolute;
+      right: -48px;
+      bottom: -54px;
+      width: 240px;
+      height: 180px;
+      background:
+        linear-gradient(135deg, transparent 42%, rgba(31,122,90,0.2) 42% 52%, transparent 52%),
+        linear-gradient(45deg, transparent 40%, rgba(223,103,79,0.2) 40% 50%, transparent 50%);
+      transform: rotate(-7deg);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--green-dark);
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .dots {
+      width: 42px;
+      height: 10px;
+      border-radius: 0;
+      background:
+        radial-gradient(circle at 5px 5px, var(--coral) 0 5px, transparent 5.5px),
+        radial-gradient(circle at 21px 5px, var(--sun) 0 5px, transparent 5.5px),
+        radial-gradient(circle at 37px 5px, var(--blue) 0 5px, transparent 5.5px);
+      box-shadow: none;
+      flex: 0 0 42px;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(40px, 7vw, 86px);
+      line-height: 0.96;
+      letter-spacing: 0;
+      max-width: 820px;
+    }
+
+    .hero-lead {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.85;
+      max-width: 760px;
+    }
+
+    .hero-lead strong {
+      color: var(--ink);
+      background: linear-gradient(transparent 58%, rgba(242,191,75,0.62) 58%);
+    }
+
+    .hero-actions {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .proof-row {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .proof {
+      min-height: 86px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.64);
+      padding: 14px;
+    }
+
+    .proof strong {
+      display: block;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .proof span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .contact-card {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background: var(--mint);
+    }
+
+    .contact-card h2 {
+      font-family: var(--serif);
+      font-size: 30px;
+      line-height: 1.08;
+    }
+
+    .qr-box {
+      border: 2px solid var(--ink);
+      border-radius: var(--radius);
+      background: white;
+      padding: 10px;
+      box-shadow: 4px 4px 0 var(--ink);
+    }
+
+    .qr-box img {
+      display: block;
+      width: 100%;
+      border-radius: 4px;
+    }
+
+    .wechat {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+      border: 2px solid var(--ink);
+      border-radius: var(--radius);
+      background: var(--white);
+      padding: 12px 14px;
+    }
+
+    .wechat span {
+      color: var(--muted);
+      display: block;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .wechat strong {
+      display: block;
+      font-size: 24px;
+      line-height: 1.1;
+    }
+
+    .copy {
+      border: 2px solid var(--ink);
+      border-radius: 7px;
+      background: var(--sun);
+      min-height: 42px;
+      padding: 0 12px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    section { scroll-margin-top: 90px; }
+
+    .section {
+      padding: 36px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 22px;
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      font-family: var(--serif);
+      font-size: clamp(30px, 4.8vw, 54px);
+      line-height: 1;
+      max-width: 680px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 430px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .panel {
+      padding: 24px;
+      box-shadow: 5px 5px 0 var(--ink);
+    }
+
+    .panel h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .panel p,
+    .panel li {
+      color: var(--muted);
+      line-height: 1.78;
+    }
+
+    .panel ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .flow-step {
+      border: 2px solid var(--ink);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: var(--white);
+      min-height: 142px;
+      position: relative;
+    }
+
+    .flow-step:nth-child(2) { background: #e8f0fa; }
+    .flow-step:nth-child(3) { background: #fff2cf; }
+    .flow-step:nth-child(4) { background: #fbe2da; }
+    .flow-step:nth-child(5) { background: #dceee4; }
+
+    .num {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--ink);
+      border-radius: 50%;
+      background: var(--sun);
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    .flow-step h3 { font-size: 18px; margin-bottom: 8px; }
+    .flow-step p { color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+    .sample {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 18px;
+    }
+
+    .phrase-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .phrase {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.68);
+      padding: 14px;
+    }
+
+    .phrase strong {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    .phrase span {
+      display: block;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.72);
+      padding: 8px 11px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .positive {
+      background: var(--green-dark);
+      color: white;
+    }
+
+    .positive p,
+    .positive li { color: rgba(255,255,255,0.84); }
+
+    .positive h3 { color: white; }
+
+    .reward-card:nth-child(2) { background: #fff2cf; }
+    .reward-card:nth-child(3) { background: #fbe2da; }
+    .reward-card:nth-child(4) { background: #e8f0fa; }
+    .reward-card:nth-child(5) { background: #dceee4; }
+
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .price-card {
+      padding: 24px;
+      box-shadow: 5px 5px 0 var(--ink);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .price-card.featured {
+      background: var(--sun);
+      transform: rotate(-0.8deg);
+    }
+
+    .price-card h3 {
+      font-family: var(--serif);
+      font-size: 28px;
+    }
+
+    .price-card ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+      line-height: 1.78;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+    }
+
+    .day {
+      border: 2px solid var(--ink);
+      border-radius: var(--radius);
+      background: var(--white);
+      padding: 14px;
+      min-height: 116px;
+    }
+
+    .day b {
+      display: block;
+      font-family: var(--serif);
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .day span {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .final-cta {
+      margin: 42px auto 58px;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 24px;
+      align-items: center;
+      border: 2px solid var(--ink);
+      border-radius: var(--radius);
+      background: var(--ink);
+      color: white;
+      padding: clamp(24px, 4vw, 40px);
+      box-shadow: var(--shadow);
+    }
+
+    .final-cta h2 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 5vw, 62px);
+      line-height: 1;
+    }
+
+    .final-cta p {
+      margin-top: 16px;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.8;
+      max-width: 760px;
+    }
+
+    .final-cta .qr-box {
+      box-shadow: none;
+      border-color: rgba(255,255,255,0.28);
+    }
+
+    .toast {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      max-width: min(420px, calc(100% - 36px));
+      border: 2px solid var(--ink);
+      border-radius: var(--radius);
+      background: var(--sun);
+      box-shadow: 4px 4px 0 var(--ink);
+      padding: 14px 16px;
+      font-weight: 900;
+      transform: translateY(140%);
+      transition: transform 220ms ease;
+      z-index: 50;
+    }
+
+    .toast.show { transform: translateY(0); }
+
+    @media (max-width: 960px) {
+      .hero,
+      .grid-2,
+      .sample,
+      .final-cta {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-3,
+      .pricing {
+        grid-template-columns: 1fr;
+      }
+
+      .flow {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .timeline {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .contact-card {
+        max-width: 520px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .wrap { width: min(100% - 22px, 1180px); }
+      .nav-inner { min-height: 62px; }
+      .nav-links a:not(.btn) { display: none; }
+      .hero { padding-top: 28px; }
+      .hero-main, .contact-card, .panel, .price-card { box-shadow: 4px 4px 0 var(--ink); }
+      .proof-row,
+      .flow,
+      .timeline {
+        grid-template-columns: 1fr;
+      }
+      .section-head {
+        display: block;
+      }
+      .section-head p {
+        margin-top: 12px;
+      }
+      .btn {
+        width: 100%;
+      }
+      .copy {
+        min-width: 82px;
+      }
+      .wechat strong {
+        font-size: 21px;
+      }
     }
   </style>
 </head>
 <body>
-  <main>
-    <h1>AI驱动英语听说</h1>
-    <p>正在打开新版英语学习页面。</p>
-    <a href="https://yonge6.github.io/Design/english-quote-log/">立即打开</a>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="回到顶部">
+        <span class="brand-mark" aria-hidden="true"><span>E</span></span>
+        <span>AI驱动英语听说产品共创计划<small>2026 Q2 · Seed Cohort</small></span>
+      </a>
+      <nav class="nav-links" aria-label="页面导航">
+        <a href="#daily">每日训练</a>
+        <a href="#cocreation">共创机制</a>
+        <a href="#mvp">7 天 MVP</a>
+        <a class="btn primary" href="#contact">加微信</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="wrap hero">
+      <section class="hero-main">
+        <div class="eyebrow"><span class="dots"></span>不痛苦 · 不 PUA · 每天可自定时长</div>
+        <h1>AI驱动英语听说产品共创计划</h1>
+        <p class="hero-lead">
+          一个 <strong>AI驱动</strong>、面向普通中国人的英语听说训练产品共创计划。主要以短视频为主，就像你刷抖音一样，不是背单词，不是刷题，不是痛苦打卡，而是每天用 <strong>30-90 秒真实短视频</strong> 听外国人怎么说，再用自己的嘴复述出来，并用大模型跟读纠音 + 真人英语老师深度参与产品的共创和群内指导，把开口变得更轻松。我们共创，用AI编程来做这个产品，学习规划和内容也AI，全流程AI。
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#contact">扫码加入共创</a>
+          <a class="btn sun" href="#today-practice">今日练习</a>
+        </div>
+        <div class="proof-row" aria-label="核心数据">
+          <div class="proof"><strong>3-6 月</strong><span>从四级水平到敢自然聊天</span></div>
+          <div class="proof"><strong>15～45min</strong><span>每日练习时长可自己设置</span></div>
+          <div class="proof"><strong>AI+真人老师</strong><span>跟读纠音，也有人给方向</span></div>
+        </div>
+      </section>
+
+      <aside class="contact-card" id="contact">
+        <h2>第一批种子共创者招募中</h2>
+        <p class="note">适合四级左右、想练听说、愿意录音输出、也愿意一起打磨产品的人。添加微信备注：英语共创。</p>
+        <div class="qr-box">
+          <img src="assets/wechat-qr.jpg" alt="微信二维码，扫码添加 Ai 魔法师永歌">
+        </div>
+        <div class="wechat">
+          <div>
+            <span>微信号</span>
+            <strong id="wechatId">yonge6</strong>
+          </div>
+          <button class="copy" type="button" id="copyWechat">复制</button>
+        </div>
+      </aside>
+    </div>
+
+    <section class="wrap section">
+      <div class="section-head">
+        <h2>目标不是完美英语，是能和世界自然聊天。</h2>
+        <p>3-6 个月内，让四级水平学习者从“听懂一点、开口紧张”，提升到能围绕电影、美食、旅行、工作、兴趣和生活经历聊 1-3 分钟。</p>
+      </div>
+      <div class="grid-3">
+        <article class="panel">
+          <h3>能听懂大意</h3>
+          <p>真实口语里不用逐字翻译，先抓人、事、情绪和关键词，听感会比死磕字幕更快长出来。</p>
+        </article>
+        <article class="panel">
+          <h3>能自然接话</h3>
+          <p>用简单句回应、追问、救场。真实交流里，能接住对方比背高级词更重要。</p>
+        </article>
+        <article class="panel">
+          <h3>敢被看见</h3>
+          <p>每天一段录音，逐步变成朋友圈、小红书、视频号可发布的英文短视频表达能力。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap section" id="daily">
+      <div class="section-head">
+        <h2>每日练习时长，由你自己设置。</h2>
+        <p>固定顺序：短视频真实输入 → 三刷法 → 大模型跟读纠音 → 录音复述 → 老师与群内反馈。</p>
+      </div>
+      <div class="flow">
+        <article class="flow-step">
+          <div class="num">1</div>
+          <h3>当天主题</h3>
+          <p>街访、电影、美食、旅行、工作、兴趣。找一个 30-90 秒英文短视频。</p>
+        </article>
+        <article class="flow-step">
+          <div class="num">2</div>
+          <h3>短视频三刷</h3>
+          <p>第一遍看大意，第二遍开字幕偷 3 句，第三遍跟读模仿语气。</p>
+        </article>
+        <article class="flow-step">
+          <div class="num">3</div>
+          <h3>AI 跟读纠音</h3>
+          <p>每天 5-8 句自然口语，用大模型听你跟读，提示重音、连读和容易卡住的音。</p>
+        </article>
+        <article class="flow-step">
+          <div class="num">4</div>
+          <h3>录音复述</h3>
+          <p>用 1-2 分钟说清视频内容，加上自己的感受和今天偷来的句子。</p>
+        </article>
+        <article class="flow-step">
+          <div class="num">5</div>
+          <h3>正反馈</h3>
+          <p>群内点赞、真人老师指导、荣誉、奖学金、展示墙，让每一次开口都被看见。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap section">
+      <div class="grid-3">
+        <article class="panel">
+          <h3>轻量版：15 分钟</h3>
+          <p>适合忙碌日。看短视频、偷 3 句、跟读重点句、录 30-60 秒复述，保持嘴巴不断线。</p>
+        </article>
+        <article class="panel">
+          <h3>标准版：30 分钟</h3>
+          <p>完整完成三刷、5-8 句跟读、大模型发音反馈、1-2 分钟录音复述和群内打卡。</p>
+        </article>
+        <article class="panel">
+          <h3>进阶版：45 分钟</h3>
+          <p>适合想加速的人。多做一次 AI 跟读纠音，整理自己的高频卡点，并向老师提一个具体问题。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap section" id="today-practice">
+      <div class="sample">
+        <article class="panel">
+          <h3>今日练习：兴趣爱好</h3>
+          <p>找一个 30-90 秒英文短视频，主题可以是街头采访：What do you do for fun?</p>
+          <div class="tag-row">
+            <span class="tag">第一遍：看懂大意</span>
+            <span class="tag">第二遍：偷 3 句</span>
+            <span class="tag">第三遍：模仿语气</span>
+          </div>
+          <p style="margin-top:18px;">录音模板：Today I watched a short video about _____. The person talked about _____. For me, I usually _____. I’m not great at it yet, but I enjoy it.</p>
+          <p style="margin-top:12px;">跟读提醒：先听短视频里的真实语气，再用朗读/播放功能听英文句子，跟读三遍，最后录音复述。AI 负责帮你抓发音细节，真人老师负责帮你把表达说得更自然。</p>
+        </article>
+        <article class="panel">
+          <h3>今日跟读</h3>
+          <div class="phrase-list">
+            <div class="phrase"><strong>What do you usually do for fun?</strong><span>你平时做什么放松？What do you 可读成 “wha-duh-yu”。</span></div>
+            <div class="phrase"><strong>I’m really into movies these days.</strong><span>我最近特别喜欢看电影。really into 连起来读。</span></div>
+            <div class="phrase"><strong>It depends on my mood.</strong><span>看我心情。depends on 连成 “di-pen-zon”。</span></div>
+            <div class="phrase"><strong>That sounds pretty fun.</strong><span>听起来挺有意思。sounds pretty 可以轻读。</span></div>
+            <div class="phrase"><strong>Sorry, I didn’t catch that.</strong><span>不好意思，我没听清。真实交流里的救场句。</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap section">
+      <div class="section-head">
+        <h2>正反馈，才是坚持的发动机。</h2>
+        <p>这个产品不靠焦虑驱动学习。完成后，用户应该感觉：今天不累，我好像真的能说一点了，明天还愿意继续。</p>
+      </div>
+      <div class="grid-3">
+        <article class="panel reward-card">
+          <h3>纠音正反馈</h3>
+          <p>大模型不是给你打击分，而是告诉你“这个音更短一点”“这里可以连起来”，让每次跟读都有一个小进步。</p>
+        </article>
+        <article class="panel reward-card">
+          <h3>身体正反馈</h3>
+          <p>嘴巴开始顺一点，开口不再那么卡。进步不是抽象分数，而是身体真的感到轻松。</p>
+        </article>
+        <article class="panel reward-card">
+          <h3>社交正反馈</h3>
+          <p>群里有人点赞、接梗、评论语气自然；真人英语老师会挑关键问题轻轻推一把。</p>
+        </article>
+        <article class="panel reward-card">
+          <h3>荣誉正反馈</h3>
+          <p>今日开口星、最佳偷句王、最松弛表达奖、连续 7 天小火苗。</p>
+        </article>
+        <article class="panel reward-card">
+          <h3>金钱正反馈</h3>
+          <p>设置奖学金：连续完成奖、最佳输出奖、最佳共创建议奖、最佳带动他人奖。</p>
+        </article>
+        <article class="panel reward-card">
+          <h3>炫耀正反馈</h3>
+          <p>鼓励把英文输出变成朋友圈、小红书、视频号内容，让成长被更多人看见。</p>
+        </article>
+        <article class="panel positive">
+          <h3>具体反馈示例</h3>
+          <p>你今天不是学了 8 句英语，而是在嘴里装进了 8 个真实外国人正在用的聊天零件。明天你再开口，会比昨天更顺一点。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap section" id="cocreation">
+      <div class="section-head">
+        <h2>付费不是卖课，是筛选共创者。</h2>
+        <p>第一批成员不叫学员，叫种子共创者、口语体验官、英语表达合伙人。谁坚持输出，谁就在帮产品变好。</p>
+      </div>
+      <div class="pricing">
+        <article class="price-card">
+          <h3>A 档：基础共创席位</h3>
+          <ul>
+            <li>每日练习时长可自己设置</li>
+            <li>大模型跟读与发音纠正</li>
+            <li>群内打卡与互相点赞</li>
+            <li>每周一次优秀作业展示</li>
+            <li>参与产品体验反馈</li>
+          </ul>
+        </article>
+        <article class="price-card">
+          <h3>B 档：联合创始人共创席</h3>
+          <ul>
+            <li>包含基础共创权益</li>
+            <li>真人英语老师深度参与共创和群内指导</li>
+            <li>参与商业模式讨论</li>
+            <li>参与内容 SOP 打磨</li>
+            <li>参与小程序/App/网页需求设计</li>
+            <li>盈利后按贡献记录设计收益激励</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap section">
+      <div class="grid-2">
+        <article class="panel">
+          <h3>适合谁</h3>
+          <ul>
+            <li>英语基础大概四级左右</li>
+            <li>想练听说，但讨厌传统痛苦学习</li>
+            <li>愿意每天投入 15-30 分钟</li>
+            <li>愿意录音、输出、被看见</li>
+            <li>未来可能参与产品、内容、社群共创</li>
+          </ul>
+        </article>
+        <article class="panel">
+          <h3>不适合谁</h3>
+          <ul>
+            <li>只想收藏资料、不行动的人</li>
+            <li>只想免费薅内容、不参与共创的人</li>
+            <li>完全不愿意开口、不愿意录音的人</li>
+            <li>期待 7 天速成、完全不想投入的人</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap section" id="mvp">
+      <div class="section-head">
+        <h2>先跑 7 天 MVP，再做产品。</h2>
+        <p>第一阶段不用急着开发 App。先用微信群 + 每日内容 + 大模型跟读纠音 + 真人英语老师深度参与产品的共创和群内指导，验证用户是否愿意每天练、每天录、每天发。</p>
+      </div>
+      <div class="timeline">
+        <article class="day"><b>Day 1</b><span>兴趣爱好：I’m really into...</span></article>
+        <article class="day"><b>Day 2</b><span>美食点单：Ordering food naturally</span></article>
+        <article class="day"><b>Day 3</b><span>旅行城市：Talking about a city</span></article>
+        <article class="day"><b>Day 4</b><span>电影聊天：How friends talk about movies</span></article>
+        <article class="day"><b>Day 5</b><span>工作介绍：What do you do?</span></article>
+        <article class="day"><b>Day 6</b><span>周末计划：Do you wanna come?</span></article>
+        <article class="day"><b>Day 7</b><span>自我介绍 + 英文短视频发布</span></article>
+      </div>
+    </section>
+
+    <section class="wrap section">
+      <div class="section-head">
+        <h2>产品飞轮</h2>
+        <p>短视频输入 → AI 跟读纠音 → 录音复述 → 老师和群内反馈 → 自媒体输出 → 获得点赞 → 更愿意坚持 → 产生更多产品数据 → 产品变好。</p>
+      </div>
+      <div class="panel positive">
+        <h3>这个项目的灵魂句</h3>
+        <p>我们不是在逼自己学英语。我们是在每天给嘴巴一点真实英语的阳光。时长你自己定，不痛苦。1 个短视频，3 句偷来的真实口语，1 段自己的声音，再加上 AI 纠音和真人老师的轻指导。3-6 个月后，你不是“英语变好了”，而是终于敢自然地和世界聊天了。</p>
+      </div>
+    </section>
+
+    <section class="wrap final-cta">
+      <div>
+        <h2>想加入第一批共创？</h2>
+        <p>扫码添加微信，备注“英语共创”。我们正在招募高意愿度、愿意输出、愿意一起打磨产品的种子伙伴。微信号：yonge6。</p>
+      </div>
+      <div class="qr-box">
+        <img src="assets/wechat-qr.jpg" alt="微信二维码，扫码添加 Ai 魔法师永歌">
+      </div>
+    </section>
   </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">已复制微信号 yonge6</div>
+
   <script>
-    window.location.replace("https://yonge6.github.io/Design/english-quote-log/");
+    const copyButton = document.getElementById("copyWechat");
+    const toast = document.getElementById("toast");
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(showToast.timer);
+      showToast.timer = setTimeout(() => toast.classList.remove("show"), 2200);
+    }
+
+    copyButton.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText("yonge6");
+        showToast("已复制微信号 yonge6");
+      } catch (error) {
+        showToast("微信号：yonge6");
+      }
+    });
   </script>
 </body>
 </html>
